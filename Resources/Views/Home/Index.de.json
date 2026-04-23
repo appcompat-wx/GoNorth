@@ -1,0 +1,35 @@
+{
+    "HomePage": "Startseite",
+
+    "WelcomeToProject": "Willkommen beim Projekt",
+
+    "Tasks": "Aufgaben",
+    "TaskManagement": "Aufgaben Verwaltung",
+
+    "Aika": "Quests",
+    "AikaQuestDatabase": "Quest Datenbank",
+
+    "Kortisto": "Npcs",
+    "KortistoNpcDatabase": "Npc Datenbank",
+    
+    "Styr": "Items",
+    "StyrItemDatabase": "Item Datenbank",
+
+    "Evne": "Fähigkeiten",
+    "EvneSkillDatabase": "Fähigkeiten Datenbank",
+
+    "Kirja": "Wiki",
+    "KirjaWiki": "Wiki Komponente",
+
+    "Karta": "Karten",
+    "KartaMap": "Karten Komponente",
+
+    "ImplementationStatus": "Implementierung",
+    "TrackCurrentImplementationProgress": "Aktueller Implementierungsfortschritt",
+
+    "ExportSettings": "Export",
+    "ManageExportSettings": "Export Einstellungen verwalten",
+
+    "ProjectSettings": "Einstellungen",
+    "ManageProjectSettings": "Projekt Einstellungen verwalten"
+}

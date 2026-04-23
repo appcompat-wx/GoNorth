@@ -1,0 +1,1 @@
+BaseNpc_LearnSkill(playerNpc, "{{ action.skill.fields.ScriptName.value }}")

@@ -1,0 +1,1 @@
+BaseNpc_DisableDailyRoutineEvent({{ action.npc.fields.Id.value }}, {{ action.daily_routine_event.earliest_time.hours }}, {{ action.daily_routine_event.earliest_time.minutes }}) 

@@ -1,0 +1,87 @@
+{
+    "Quest": "Quest",
+
+    "NameMissing": "Quest name",
+
+    "Save": "Save",
+    "IsImplemented": "Implemented",
+    "IsNotImplementedTooltip": "Quest is not yet implemented.",
+    "MarkAsImplemented": "Mark as implemented", 
+    "ShowStatistics": "Statistics",
+    "OpenQuestList": "Open quest list",
+    "Export": "Export",
+    "Delete": "Delete",
+
+    "HeaderData": "Header data",
+
+    "Fields": "Fields",
+    "NoFieldsAdded": "No fields have been added to the quest",
+
+    "Connections": "Connections",
+    "UsedInAikaDetailView": "Used in chapter detail views:",
+    "UsedInAikaQuest": "Used in quests:",
+    "MentionedInKirjaPages": "Mentioned in wiki pages:",
+    "ReferencedInTaleDialogs": "Referenced in dialogs:",
+    "HasMarkersInKartaMaps": "Marked in maps:",
+    "ReferencedInDailyRoutines": "Referenced in daily routines:",
+    "ReferencedInStateMachines": "Referenced in state machines:",
+    "ReferencedInEvneSkills": "Referenced in skills:",
+    "ReferencedInExportSnippets": "Referenced in export snippets:",
+
+    "ClickHereForDetailedReferences": "The quest is referenced in multiple objects. Click here for details.",
+    "ClickHereToCloseDetailedReferences": "Click here to close the references.",
+
+    "Npc": "Npc",    
+    "Item": "Item",
+    "Skill": "Skill",
+
+    "Name": "Name",
+    "Description": "Description",
+    "IsMainQuest": "Main quest",
+
+    "TextNode": "Text",
+    "ConditionNode": "Condition",
+    "ActionNode": "Action",
+    "FinishNode": "Finish",
+    "AllDone": "All done",
+    "ReferenceNode": "Reference",
+
+    "AreYouSure": "Are you sure?",
+    "AreYouSureYouWantToDeleteTheQuest": "Are you sure you want to delete the quest?",
+    "Yes": "Yes",
+    "No": "No",
+
+    "DialogStatistics": "Statistics",
+    "TotalWordCount": "Total word count",
+    "DescriptionWordCount": "Description word count",
+    "TextWordCount": "Text word count",
+    "ChoiceWordCount": "Choice word count",
+    "ReferenceWordCount": "Reference word count",
+    "ActionWordCount": "Action word count",
+    "FinishWordCount": "Finish node word count",
+    "TotalConditionCount": "Total condition count",
+    "TotalNodeCount": "Total node count",
+    "TextNodeCount": "Total text node count",
+    "ChoiceNodeCount": "Total choice node count",
+    "ActionNodeCount": "Total action node count",
+    "ConditionNodeCount": "Total condition node count",
+    "ReferenceNodeCount": "Total reference node count",
+    "FinishNodeCount": "Total finish node count",
+    "AllDoneNodeCount": "Total all done node count",
+    "Close": "Close",
+
+    "JSON": "JSON",
+    
+    "DirtyMessage": "There are unsaved changes. Are you sure you want to leave the page?",
+
+    "Error": "Error:",
+    "ErrorOccured": "An error occured.",
+    "QuestNotFound": "Quest was not found.",
+
+    "Locked": "Locked",
+    "LockedPrefix": "The quest is currently being edited by ",
+    "LockedPostfix": ".",
+
+    "NodeLang": "en",
+    "RichTextLocale": "en"
+}

@@ -1,0 +1,1 @@
+BaseNpc_ShowFloatingTextAboveNpc(playerNpc, "{{ langkey action.text }}") -- {{ action.text_preview }}

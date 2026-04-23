@@ -1,0 +1,1 @@
+playerNpc:play_animation("{{ action.animation }}")

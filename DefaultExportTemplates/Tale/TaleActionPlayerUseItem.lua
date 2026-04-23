@@ -1,0 +1,1 @@
+BaseNpc_UseItem(playerNpc, "{{ action.selected_item.fields.ScriptName.value }}")

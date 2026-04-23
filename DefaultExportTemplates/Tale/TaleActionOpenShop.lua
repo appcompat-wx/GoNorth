@@ -1,0 +1,1 @@
+BaseDialog_OpenShop(this)

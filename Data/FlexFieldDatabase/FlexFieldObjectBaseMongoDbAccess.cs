@@ -1,0 +1,430 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using GoNorth.Config;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
+
+namespace GoNorth.Data.FlexFieldDatabase
+{
+    /// <summary>
+    /// Flex Field Object Mongo DB Access
+    /// </summary>
+    public class FlexFieldObjectBaseMongoDbAccess<T> : BaseMongoDbAccess, IFlexFieldObjectDbAccess<T> where T:FlexFieldObject,new()
+    {
+        /// <summary>
+        /// Collection Name of the recycling bin
+        /// </summary>
+        private readonly string _RecylingBinCollectionName;
+
+        /// <summary>
+        /// Object Collection
+        /// </summary>
+        protected IMongoCollection<T> _ObjectCollection;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="collectionName">Name of the object collection</param>
+        /// <param name="recylingBinCollectionName">Name of the recyling bin object collection</param>
+        /// <param name="configuration">Configuration</param>
+        public FlexFieldObjectBaseMongoDbAccess(string collectionName, string recylingBinCollectionName, IOptions<ConfigurationData> configuration) : base(configuration)
+        {
+            _RecylingBinCollectionName = recylingBinCollectionName;
+            _ObjectCollection = _Database.GetCollection<T>(collectionName);
+        }
+
+        /// <summary>
+        /// Creates a Flex Field Object
+        /// </summary>
+        /// <param name="flexFieldObject">Flex Field object to create</param>
+        /// <returns>Created flex field object, with filled id</returns>
+        public async Task<T> CreateFlexFieldObject(T flexFieldObject)
+        {
+            flexFieldObject.Id = Guid.NewGuid().ToString();
+            await _ObjectCollection.InsertOneAsync(flexFieldObject);
+
+            return flexFieldObject;
+        }
+
+        /// <summary>
+        /// Returns an Flex Field Object by id
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returns>Flex Field Object</returns>
+        public async Task<T> GetFlexFieldObjectById(string id)
+        {
+            T flexFieldObject = await _ObjectCollection.Find(n => n.Id == id).FirstOrDefaultAsync();
+            return flexFieldObject;
+        }
+
+        /// <summary>
+        /// Returns a list Flex Field Objects by id with full data
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsByIds(List<string> id)
+        {
+            List<T> flexFieldObjects = await _ObjectCollection.Find(n => id.Contains(n.Id)).ToListAsync();
+            return flexFieldObjects;
+        }
+
+        /// <summary>
+        /// Builds a flex field object queryable for root folder objects
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Queryable</returns>
+        private IFindFluent<T, T> BuildFlexFieldObjectInRootFolderQueryable(string projectId, string locale)
+        {
+            return _ObjectCollection.Find(n => n.ProjectId == projectId && string.IsNullOrEmpty(n.ParentFolderId), new FindOptions {
+                Collation = new Collation(locale, null, CollationCaseFirst.Off, CollationStrength.Primary)
+            });
+        }
+
+        /// <summary>
+        /// Returns the Flex Field Objects in the root folder
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="start">Start of the query</param>
+        /// <param name="pageSize">Page Size</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsInRootFolderForProject(string projectId, int start, int pageSize, string locale)
+        {
+            List<T> flexFieldObjects = await BuildFlexFieldObjectInRootFolderQueryable(projectId, locale).SortBy(n => n.Name).Skip(start).Limit(pageSize).Project(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+                ImageFile = c.ImageFile,
+                ThumbnailImageFile = c.ThumbnailImageFile
+            }).ToListAsync();
+            return flexFieldObjects;
+        }
+
+        /// <summary>
+        /// Returns the count of Flex Field Objects in the root folder
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Count</returns>
+        public async Task<int> GetFlexFieldObjectsInRootFolderCount(string projectId, string locale)
+        {
+            int count = (int)await BuildFlexFieldObjectInRootFolderQueryable(projectId, locale).CountDocumentsAsync();
+            return count;
+        }
+
+        /// <summary>
+        /// Builds a flex field object queryable for objects in a folder
+        /// </summary>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Queryable</returns>
+        private IFindFluent<T, T> BuildFlexFieldObjectInFolderQueryable(string folderId, string locale)
+        {
+            return _ObjectCollection.Find(n => n.ParentFolderId == folderId, new FindOptions {
+                Collation = new Collation(locale, null, CollationCaseFirst.Off, CollationStrength.Primary)
+            });
+        }
+
+        /// <summary>
+        /// Returns all Flex Field Objects in a folder
+        /// </summary>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="start">Start of the query</param>
+        /// <param name="pageSize">Page Size</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsInFolder(string folderId, int start, int pageSize, string locale)
+        {
+            List<T> flexFieldObjects = await BuildFlexFieldObjectInFolderQueryable(folderId, locale).SortBy(n => n.Name).Skip(start).Limit(pageSize).Project(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+                ImageFile = c.ImageFile,
+                ThumbnailImageFile = c.ThumbnailImageFile
+            }).ToListAsync();
+            return flexFieldObjects;
+        }
+
+        /// <summary>
+        /// Returns the count of Flex Field Objects in a folder folder
+        /// </summary>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Count</returns>
+        public async Task<int> GetFlexFieldObjectsInFolderCount(string folderId, string locale)
+        {
+            int count = (int)await BuildFlexFieldObjectInFolderQueryable(folderId, locale).CountDocumentsAsync();
+            return count;
+        }
+
+        /// <summary>
+        /// Builds a flex field object queryable not implemented objects
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Queryable</returns>
+        private IFindFluent<T, T> BuildNotImplementedQueryable(string projectId, string locale)
+        {
+            return _ObjectCollection.Find(n => n.ProjectId == projectId && !n.IsImplemented, new FindOptions {
+                Collation = new Collation(locale, null, CollationCaseFirst.Off, CollationStrength.Primary)
+            });
+        }
+
+        /// <summary>
+        /// Returns all Flex Field Objects that are not yet implemented
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="start">Start of the query</param>
+        /// <param name="pageSize">Page Size</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> GetNotImplementedFlexFieldObjects(string projectId, int start, int pageSize, string locale)
+        {
+            List<T> flexFieldObjects = await BuildNotImplementedQueryable(projectId, locale).SortBy(n => n.Name).Skip(start).Limit(pageSize).Project(c => new T() {
+                Id = c.Id,
+                Name = c.Name
+            }).ToListAsync();
+            return flexFieldObjects;
+        }
+
+        /// <summary>
+        /// Returns the count of all Flex Field Objects that are not yet implemented
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Count</returns>
+        public async Task<int> GetNotImplementedFlexFieldObjectsCount(string projectId, string locale)
+        {
+            int count = (int)await BuildNotImplementedQueryable(projectId, locale).CountDocumentsAsync();
+            return count;
+        }
+
+
+        /// <summary>
+        /// Builds a flex field object search queryable
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="searchPattern">Search pattern</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Object Queryable</returns>
+        private IFindFluent<T, T> BuildFlexFieldObjectSearchQueryable(string projectId, string searchPattern, string locale)
+        {
+            string regexPattern = ".";
+            if(!string.IsNullOrEmpty(searchPattern))
+            {
+                string[] searchPatternParts = searchPattern.Split(" ").Select(s => Regex.Escape(s)).ToArray();
+                regexPattern = "(" + string.Join("|", searchPatternParts) + ")";
+            }
+            return _ObjectCollection.Find(n => n.ProjectId == projectId && (Regex.IsMatch(n.Name, regexPattern, RegexOptions.IgnoreCase) || n.Tags.Any(t => Regex.IsMatch(t, regexPattern, RegexOptions.IgnoreCase))), new FindOptions {
+                Collation = new Collation(locale, null, CollationCaseFirst.Off, CollationStrength.Primary)
+            });
+        }
+
+        /// <summary>
+        /// Searches Flex Field Objects
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="searchPattern">Search pattern</param>
+        /// <param name="start">Start of the query</param>
+        /// <param name="pageSize">Page Size</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> SearchFlexFieldObjects(string projectId, string searchPattern, int start, int pageSize, string locale)
+        {
+            return await BuildFlexFieldObjectSearchQueryable(projectId, searchPattern, locale).SortBy(c => c.Name).Skip(start).Limit(pageSize).Project(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+                ImageFile = c.ImageFile,
+                ThumbnailImageFile = c.ThumbnailImageFile
+            }).ToListAsync();
+        }
+
+        /// <summary>
+        /// Returns the count of a search result
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="searchPattern">Search pattern</param>
+        /// <param name="locale">Locale used for the collation</param>
+        /// <returns>Count of results</returns>
+        public async Task<int> SearchFlexFieldObjectsCount(string projectId, string searchPattern, string locale)
+        {
+            return (int)await BuildFlexFieldObjectSearchQueryable(projectId, searchPattern, locale).CountDocumentsAsync();
+        }
+
+        /// <summary>
+        /// Returns the Flex Field Objects which are based on a certain template
+        /// </summary>
+        /// <param name="templateId">Template Id</param>
+        /// <returns>Flex Field Objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsByTemplate(string templateId)
+        {
+            return await _ObjectCollection.AsQueryable().Where(n => n.TemplateId == templateId).ToListAsync();
+        }
+        
+        /// <summary>
+        /// Returns all flex field objects that are not part of an id list. This means that they are not part of the list themselfs and or their template
+        /// </summary>
+        /// <param name="projectId">Id of the project</param>
+        /// <param name="idList">List of ids</param>
+        /// <returns>Flex field objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsNotPartOfIdList(string projectId, IEnumerable<string> idList)
+        {
+            return await _ObjectCollection.AsQueryable().Where(n => n.ProjectId == projectId && !idList.Contains(n.TemplateId) && !idList.Contains(n.Id)).Select(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+            }).ToListAsync();
+        }
+        
+        /// <summary>
+        /// Returns all flex field objects that are part of an id list. This means that they are not part of the list themselfs and or their template
+        /// </summary>
+        /// <param name="projectId">Id of the project</param>
+        /// <param name="idList">List of ids</param>
+        /// <returns>Flex field objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsPartOfIdList(string projectId, IEnumerable<string> idList)
+        {
+            return await _ObjectCollection.AsQueryable().Where(n => n.ProjectId == projectId && idList.Contains(n.TemplateId) || idList.Contains(n.Id)).Select(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+            }).ToListAsync();
+        }
+
+        /// <summary>
+        /// Resolves the names for a list of Flex Field Objects
+        /// </summary>
+        /// <param name="flexFieldObjectIds">Flex Field Object Ids</param>
+        /// <returns>Resolved Flex Field Objects with names</returns>
+        public async Task<List<T>> ResolveFlexFieldObjectNames(List<string> flexFieldObjectIds)
+        {
+            return await  _ObjectCollection.AsQueryable().Where(n => flexFieldObjectIds.Contains(n.Id)).Select(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+            }).ToListAsync();
+        }
+
+        /// <summary>
+        /// Returns a list of objects by id
+        /// </summary>
+        /// <param name="idsToLoad">Ids of the objects to load</param>
+        /// <returns>List of loaded objects</returns>
+        public async Task<List<T>> GetObjectsById(List<string> idsToLoad)
+        {
+            return await _ObjectCollection.AsQueryable().Where(i => idsToLoad.Contains(i.Id)).ToListAsync();
+        }
+
+        /// <summary>
+        /// Updates an Flex Field Object
+        /// </summary>
+        /// <param name="flexFieldObject">Flex Field Object to update</param>
+        /// <returns>Task</returns>
+        public async Task UpdateFlexFieldObject(T flexFieldObject)
+        {
+            ReplaceOneResult result = await _ObjectCollection.ReplaceOneAsync(n => n.Id == flexFieldObject.Id, flexFieldObject);
+        }
+
+        /// <summary>
+        /// Moves an object to a folder
+        /// </summary>
+        /// <param name="objectId">Object to move</param>
+        /// <param name="targetFolderId">Id of the folder to move the object to</param>
+        /// <returns>Task</returns>
+        public async Task MoveToFolder(string objectId, string targetFolderId)
+        {
+            await _ObjectCollection.UpdateOneAsync(Builders<T>.Filter.Eq(f => f.Id, objectId), 
+                                                   Builders<T>.Update.Set(p => p.ParentFolderId, targetFolderId));
+        }
+
+        /// <summary>
+        /// Deletes an Flex Field Object
+        /// </summary>
+        /// <param name="flexFieldObject">Flex Field Object to delete</param>
+        /// <returns>Task</returns>
+        public async Task DeleteFlexFieldObject(T flexFieldObject)
+        {
+            T existingFlexFieldObject = await GetFlexFieldObjectById(flexFieldObject.Id);
+            if(existingFlexFieldObject == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            IMongoCollection<T> recyclingBin = _Database.GetCollection<T>(_RecylingBinCollectionName);
+            await recyclingBin.InsertOneAsync(existingFlexFieldObject);
+
+            DeleteResult result = await _ObjectCollection.DeleteOneAsync(n => n.Id == flexFieldObject.Id);
+        }
+
+        /// <summary>
+        /// Checks if any Flex Field Object use an image file
+        /// </summary>
+        /// <param name="imageFile">Image file</param>
+        /// <returns>true if image file is used, else false</returns>
+        public async Task<bool> AnyFlexFieldObjectUsingImage(string imageFile)
+        {
+            int count = (int)await _ObjectCollection.CountDocumentsAsync(Builders<T>.Filter.Eq(n => n.ImageFile, imageFile) | Builders<T>.Filter.Eq(n => n.ThumbnailImageFile, imageFile));
+            return count > 0;
+        }
+
+        /// <summary>
+        /// Checks if any Flex Field Object use a tag
+        /// </summary>
+        /// <param name="projectId">Id of the proejct</param>
+        /// <param name="tag">Tag</param>
+        /// <returns>true if tag is used, else false</returns>
+        public async Task<bool> AnyFlexFieldObjectUsingTag(string projectId, string tag)
+        {
+            tag = tag.ToLowerInvariant();
+            return await _ObjectCollection.AsQueryable().Where(n => n.ProjectId == projectId && n.Tags.Any(s => s.ToLowerInvariant() == tag)).AnyAsync();
+        }
+
+
+        /// <summary>
+        /// Returns all objects that were last modified by a given user
+        /// </summary>
+        /// <param name="userId">Id of the user</param>
+        /// <returns>Objects</returns>
+        public async Task<List<T>> GetFlexFieldObjectsByModifiedUser(string userId)
+        {
+            return await _ObjectCollection.AsQueryable().Where(n => n.ModifiedBy == userId).ToListAsync();
+        }
+                
+        /// <summary>
+        /// Returns all objects in Recycle bin that were last modified by a given user
+        /// </summary>
+        /// <param name="userId">Id of the user</param>
+        /// <returns>Objects</returns>
+        public async Task<List<T>> GetRecycleBinFlexFieldObjectsByModifiedUser(string userId)
+        {
+            IMongoCollection<T> recyclingBin = _Database.GetCollection<T>(_RecylingBinCollectionName);
+
+            return await recyclingBin.AsQueryable().Where(b => b.ModifiedBy == userId).ToListAsync();
+        }
+
+        /// <summary>
+        /// Resets all objects in the Recycle bin that were modified by a user
+        /// </summary>
+        /// <param name="userId">Id of the user</param>
+        /// <returns>Task</returns>
+        public async Task ResetRecycleBinFlexFieldObjectsByModifiedUser(string userId)
+        {
+            IMongoCollection<T> recyclingBin = _Database.GetCollection<T>(_RecylingBinCollectionName);
+            await recyclingBin.UpdateManyAsync(n => n.ModifiedBy == userId, Builders<T>.Update.Set(n => n.ModifiedBy, Guid.Empty.ToString()).Set(n => n.ModifiedOn, DateTimeOffset.UtcNow));
+        }
+
+        /// <summary>
+        /// Resolves the names for a list of Flex Field Objects in the Recycle bin
+        /// </summary>
+        /// <param name="flexFieldObjectIds">Flex Field Object Ids</param>
+        /// <returns>Resolved Flex Field Objects with names</returns>
+        public async Task<List<T>> ResolveRecycleBinFlexFieldObjectNames(List<string> flexFieldObjectIds)
+        {
+            IMongoCollection<T> recyclingBin = _Database.GetCollection<T>(_RecylingBinCollectionName);
+            return await  recyclingBin.AsQueryable().Where(n => flexFieldObjectIds.Contains(n.Id)).Select(c => new T() {
+                Id = c.Id,
+                Name = c.Name,
+            }).ToListAsync();
+        }
+    }
+}

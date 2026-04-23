@@ -1,0 +1,85 @@
+{
+    "Skill": "Skill",
+    "Template": "Template",
+
+    "Save": "Save",
+    "SaveAndDistributeFields": "Save & distribute fields to skills",
+    "IsImplemented": "Implemented",
+    "IsNotImplementedTooltip": "Skill is not implemented.",
+    "MarkAsImplemented": "Mark as implemented",
+    "ManageTemplate": "Export template",
+    "Export": "Export",
+    "Script": "Script",
+    "JSON": "JSON",
+    "LanguageFile": "Language file",
+    "ExportSnippets": "Export Snippets",
+    "RegenerateLanguageKeys": "Regenerate language keys",
+    "Cancel": "Cancel",
+    "Delete": "Delete",
+
+    "Name": "Name",
+    "DropImageHere": "Drop image for skill here or click to choose an image",
+    "OpenImageInFullSize": "Open image in full size",
+
+    "SkillFlow": "Skill flow",
+    "TextNode": "Text",
+    "ActionNode": "Action",
+    "ConditionNode": "Condition",
+    "ReferenceNode": "Reference",
+
+    "InvalidSnippets": "Invalid export snippets",
+    "ValidSnippets": "Valid export snippets",
+    "ThereAreInvalidSnippets": "There are invalid snippets because the associated placeholders have been deleted from the template. They will not be exported.",
+    "NoExportSnippetExist": "No export snippets exist for this object. You have to add export snippets to the template using the export snippets placeholders to use this function.",
+    "DeleteSnippetToolTip": "Click here to delete the snippet",
+    "AreYouSureYouWantToDeleteTheExportSnippet": "Are you sure you want to delete the export snippet?",
+    "Close": "Close",
+
+    "ReferencedInAikaQuests": "Referenced in quests:",
+    
+    "MentionedInKirjaPages": "Mentioned in pages:",
+
+    "MarkedInKartaMaps": "Marked in maps:",
+    "MarkedInMapNTimes": "Skill is marked in the map {{0}} times. No zoom on marker is possible.",
+
+    "ReferencedInTaleDialogs": "Referenced in dialogs:",
+
+    "ReferencedInDailyRoutines": "Referenced in daily routines:",
+    "ReferencedInExportSnippets": "Referenced in export snippets:",
+
+    "ReferencedInStateMachines": "Referenced in state machines:",
+    
+    "ReferencedInEvneSkills": "Referenced in skills:",
+
+    "ClickHereForDetailedReferences": "The skill is referenced in multiple objects. Click here for details.",
+    "ClickHereToCloseDetailedReferences": "Click here to close the references.",
+
+    "Npc": "Npc",
+    "Item": "Item",
+
+    "LearnedByNpcs": "Learned by Npcs:",
+
+    "AreYouSure": "Are you sure?",
+    "AreYouSureYouWantToDeleteTheObject": "Are you sure you want to delete the skill?",
+    "AreYouSureYouWantToDeleteTheTemplate": "Are you sure you want to delete the template?",
+    "AreYouSureYouWantToRegenerateTheLanguageKeys": "Are you sure you want to regenerate the language keys? This can be useful if the name of the object was changed for example.",
+    "DeletingThisTemplateWillAlsoDeleteExportTemplate": "If you delete this template the associated export template will also be deleted. The skill default export template will be used in this case.",
+    "ExistingLanguageKeysWillChange": "If the language keys are regenerated the existing keys can change. Existing translations might need to be changed.",
+    "Yes": "Yes",
+    "No": "No",
+
+    "DirtyMessage": "There are unsaved changes. Are you sure you want to leave the page?",
+
+    "Error": "Error:",
+    "ErrorOccured": "An error occured.",
+    "ObjectNotFound": "Skill was not found.",
+
+    "Locked": "Locked",
+    "LockedTemplatePrefix": "The template is currently being edited by ",
+    "LockedObjectPrefix": "The skill is currently being edited by ",
+    "LockedPostfix": ".",
+
+    "NodeLang": "en",
+    "RichTextLocale": "en",
+    "DropzoneLocale": "en"
+}

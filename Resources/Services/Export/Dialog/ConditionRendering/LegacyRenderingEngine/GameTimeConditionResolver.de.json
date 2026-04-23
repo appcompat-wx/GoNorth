@@ -1,0 +1,10 @@
+{
+    "PlaceholderDesc_Tale_Condition_Time_Operator": "Vergleichsoperator für die Zeit. Wird aus den Vergleichsoperator Templates geladen.",
+    "PlaceholderDesc_Tale_Condition_Time_Operator_Is_Before_Start": "Start des Inhalts der nur gerendert wird wenn der Operator 'vor' ist. Muss mit Tale_Condition_Time_Operator_Is_Before_End abgeschlossen werden.",
+    "PlaceholderDesc_Tale_Condition_Time_Operator_Is_Before_End": "Ende des Inhalts der nur gerendert wird wenn der Operator 'vor' ist.",
+    "PlaceholderDesc_Tale_Condition_Time_Operator_Is_After_Start": "Start des Inhalts der nur gerendert wird wenn der Operator 'nach' ist. Muss mit Tale_Condition_Time_Operator_Is_After_End abgeschlossen werden.",
+    "PlaceholderDesc_Tale_Condition_Time_Operator_Is_After_End": "Ende des Inhalts der nur gerendert wird wenn der Operator 'nach' ist.",
+    "PlaceholderDesc_Tale_Condition_Time_Hours": "Stunden für den Vergleich",
+    "PlaceholderDesc_Tale_Condition_Time_Minutes": "Minuten für den Vergleich",
+    "PlaceholderDesc_Tale_Condition_Time_TotalMinutes": "Gesamtminuten für den Vergleich. Wird Berechnet als Stunden * MinutenProStunde + Minuten."
+}
