@@ -1,2 +1,0 @@
-BaseNpc_WalkNpcToNpc(this, BaseNpc_GetNpcById({{ action.target_npc.fields.Id.value }}), "{{ action.movement_state }}", "{{ if action_node.child_node && action_node.child_node.node_step_function_name }}{{ action_node.child_node.node_step_function_name }}{{ end }}"){{ if action.direct_continue_function }}
-{{ action.direct_continue_function }}(this){{ end }}

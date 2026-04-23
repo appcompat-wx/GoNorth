@@ -1,1 +1,0 @@
-BaseNpc_ShowFloatingTextAboveNpc(this, "{{ langkey action.text }}") -- {{ action.text_preview }}

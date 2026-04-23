@@ -1,1 +1,0 @@
-BaseNpc_HasNpcDailyRoutineEvent({{ condition.npc.fields.Id.value }}, {{ condition.daily_routine_event.earliest_time.hours }}, {{ condition.daily_routine_event.earliest_time.minutes }})

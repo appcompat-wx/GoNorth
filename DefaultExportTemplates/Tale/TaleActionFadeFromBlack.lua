@@ -1,1 +1,0 @@
-BaseDialog_FadeFromBlack({{ action.fade_time }})

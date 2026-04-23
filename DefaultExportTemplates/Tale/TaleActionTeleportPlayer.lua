@@ -1,1 +1,0 @@
-BaseNpc_TeleportNpcToMarker(playerNpc, "{{ action.target_marker_name }}")

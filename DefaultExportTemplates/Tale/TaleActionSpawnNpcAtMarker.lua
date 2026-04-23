@@ -1,1 +1,0 @@
-BaseDialog_SpawnNpcAtMarker("{{ action.object.fields.ScriptName.value }}", "{{ action.target_marker_name }}", {{ action.pitch }}, {{ action.yaw }}, {{ action.roll }})

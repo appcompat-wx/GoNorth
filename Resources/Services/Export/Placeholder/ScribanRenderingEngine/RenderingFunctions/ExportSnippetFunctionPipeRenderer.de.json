@@ -1,3 +1,0 @@
-{
-    "PlaceholderDesc_ExportSnippetFunction": "Rendert eine Export Snippet Funktion basierend auf dem geteilten Template für Snippet Funktionen. Als &lt;EXPORT_SNIPPET_FUNCTION&gt; muss eine Export Snippet Funktion, wie beispielsweise ein Eintrag aus export_snippet.snippet.&lt;SNIPPET_NAME&gt;.all_functions, übergeben werden."
-}
