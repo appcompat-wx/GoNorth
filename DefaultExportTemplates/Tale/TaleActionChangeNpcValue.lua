@@ -1,1 +1,0 @@
-this:set_value("{{ action.target_field.name }}", {{ if action.original_operator != "=" }}this:get_value("{{ action.target_field.name }}") {{ action.operator }}{{ end }} {{ if action.target_field.type == "string" }}"{{ end }}{{ action.value_change }}{{ if action.target_field.type == "string" }}"{{ end }})

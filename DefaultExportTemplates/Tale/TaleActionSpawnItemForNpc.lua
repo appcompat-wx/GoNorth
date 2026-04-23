@@ -1,1 +1,0 @@
-BaseNpc_AddItemToNpc(this, "{{ action.selected_item.fields.ScriptName.value }}", {{ action.quantity }})

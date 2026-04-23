@@ -1,1 +1,0 @@
-BaseNpc_UnlearnSkill(playerNpc, "{{ action.skill.fields.ScriptName.value }}")

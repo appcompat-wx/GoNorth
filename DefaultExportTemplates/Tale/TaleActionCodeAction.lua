@@ -1,1 +1,0 @@
-{{ action.script_code }} 

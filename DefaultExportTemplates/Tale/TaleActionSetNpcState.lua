@@ -1,1 +1,0 @@
-this:push_state("{{ action.target_state }}")

@@ -1,1 +1,0 @@
-targetNpc:push_state("{{ action.target_state }}")

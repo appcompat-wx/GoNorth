@@ -1,1 +1,0 @@
-BaseNpc_TeleportNpcToMarker(BaseNpc_GetNpcById({{ action.npc.fields.Id.value }}), "{{ action.target_marker_name }}")

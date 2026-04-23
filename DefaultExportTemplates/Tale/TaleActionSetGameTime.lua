@@ -1,1 +1,0 @@
-BaseDialog_SetGameTime({{ action.hours }}, {{ action.minutes }})

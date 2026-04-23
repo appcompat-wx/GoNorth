@@ -1,1 +1,0 @@
-BaseNpc_ShowFloatingTextAboveNpc(BaseNpc_GetNpcById({{ action.target_npc.fields.Id.value }}), "{{ langkey action.text }}") -- {{ action.text_preview }}

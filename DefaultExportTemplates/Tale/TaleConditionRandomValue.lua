@@ -1,1 +1,0 @@
-math.random({{ condition.min_value }}, {{ condition.max_value }}) {{ condition.operator }} {{ condition.compare_value }}
