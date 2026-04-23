@@ -1,0 +1,37 @@
+{
+    "ManageTemplate": "Template verwalten",
+
+    "TemplateBasedOnParent": "Für dieses Objekt ist noch kein eigenes Template gespeichert. Es wird das übergeordnete Template verwendet. Hier klicken um das übergeordnete Template zu laden.",
+
+    "LegacyTemplate": "Legacy Template",
+    "UpdateLegacyTemplateForNewFeatures": "Aktualisiere dieses Template zu einem modernen Template um neue Features verwenden zu können und Zugriff auf flexiblere Platzhalter zu erhalten.",
+    "ConvertToModernTemplate": "Zu modernem Template konvertieren",
+    "Close": "Schließen",
+
+    "Save": "Speichern",
+    "Delete": "Löschen",
+
+    "ChildObjectsHavingCustomizedTemplate": "Die folgendene Kindobjekte verwenden ein eigenes Export Template. Es könnte sein das du hier Änderungen ebenfalls anpassen musst.",
+    "Template": "(Template)",
+
+    "ObjectsHavingInvalidSnippets": "Die folgenden Objekte besitzen Export Snippets welche nicht länger im Template vorhanden sind. Die Objekte müssen geprüft werden.",
+
+    "Placeholders": "Platzhalter",
+    "Name": "Name",
+    "Description": "Beschreibung",
+
+    "AreYouSure": "Bist du sicher?",
+    "AreYouSureYouWantToDeleteTheTemplate": "Bist du sicher das das Template gelöscht werden soll?",
+    "AllObjectsUsingThisTemplateWillUseParentTemplate": "Wenn du dieses Template löscht nutzen alle Objekte die auf diesem Template basieren erneut das übergeordnete Template.",
+    "Yes": "Ja",
+    "No": "Nein",
+    
+    "DirtyMessage": "Es liegen ungespeicherte Änderungen vor. Willst du die Seite wirklich verlassen?",
+
+    "Error": "Fehler:",
+    "ErrorOccured": "Es ist ein Fehler aufgetreten.",
+    
+    "Locked": "Gesperrt",
+    "LockedPrefix": "Dieses Template wird gerade von ",
+    "LockedPostfix": " bearbeitet."
+}

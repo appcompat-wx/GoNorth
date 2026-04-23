@@ -1,0 +1,2417 @@
+﻿/* Shared */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.gn-mainContainer {
+    min-height: calc(100% - 51px);
+}
+
+.gn-mainContainerSmall {
+    padding-top: 65px;
+}
+
+footer {
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.gn-inputPromptMultiLine {
+    height: 120px !important;
+}
+
+.gn-inputPromptMaxSizeDialog {
+    width: 90%;
+}
+
+.gn-inputPromptMaxSizeDialog textarea {
+    height: 240px !important;
+}
+
+/* Cookie policy */
+#cookieConsent {
+    top: 21px;
+    position: relative;
+}
+
+.gn-cookieContainer {
+    padding-right: 30px;
+}
+
+.gn-cookiePolicySummary {
+    margin-top: 13px;
+    margin-right: 10px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/** Navbar Collapse **/
+@media (min-width: 1200px) and (max-width: 1600px) {
+	.navbar-nav > li > a {
+		font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+	.navbar-nav .open .dropdown-menu {
+		position: static;
+		float: none;
+		width: auto;
+		margin-top: 0;
+		background-color: transparent;
+		border: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+    }
+    
+	.navbar-nav .open .dropdown-menu > li > a {
+		line-height: 20px;
+    }
+    
+	.navbar-nav .open .dropdown-menu > li > a,
+	.navbar-nav .open .dropdown-menu .dropdown-header {
+		padding: 5px 15px 5px 25px;
+    }
+    
+	.dropdown-menu > li > a {
+		display: block;
+		padding: 3px 20px;
+		clear: both;
+		font-weight: normal;
+		line-height: 1.42857143;
+		color: #333;
+		white-space: nowrap;
+    }
+    
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+
+    .navbar-nav {
+        float: none!important;
+		margin: 7.5px 50px 7.5px -15px;
+    }
+
+    .navbar-right {
+        float: none!important;
+    }
+
+    .navbar-nav>li {
+        float: none;
+    }
+
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+
+    .navbar-fixed-top .navbar-collapse {
+        max-height: none !important;
+    }
+
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
+/** Shared **/
+@media(min-width:1600px) {
+    .container {
+        width: 1570px;
+    }
+}
+
+@media(min-width:2000px) {
+    .container {
+        width: 1970px;
+    }
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+
+.gn-adminNavButton {
+    font-size: 12px;
+}
+
+@media(max-width:992px) {
+    .navbar-brand {
+        font-size: 12px;
+    }
+
+    .navbar-nav a {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1599px) {
+    .navbar-nav a {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+}
+
+.gn-gridTableHeader {
+    font-weight: bold;
+}
+
+.gn-gridTableCell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30px;
+}
+
+@media(min-width:768px) {
+    .gn-gridTableCell {
+        border-bottom: 1px solid #CCCCCC;
+    }
+}
+
+@media(max-width:767px) {
+    .gn-gridTableRow > .gn-gridTableCell:last-of-type  {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #CCCCCC;
+    }
+}
+
+.gn-buttonContainer {
+    text-align: right;
+    padding-top: 20px;
+}
+
+.gn-formGroupTopMargin {
+    margin-top: 15px;
+}
+
+.gn-inlineDropdown {
+    display: inline-block;
+}
+
+.gn-commandWidgetTopMargin {
+    margin-top: 10px;
+}
+
+.gn-defaultContentTopMargin {
+    margin-top: 20px;
+}
+
+.gn-clickable {
+    cursor: pointer;
+}
+
+.gn-nonResizeable {
+    resize: none;
+}
+
+.gn-tagInput {
+    height: 38px;
+    line-height: 28px !important;
+}
+
+.gn-tagInput[disabled] input {
+   display: none;
+}
+
+.gn-tagInput[disabled] span[data-role="remove"] { 
+    display: none; 
+}
+
+.gn-tag {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.gn-buttonMarginLeft {
+    margin-left: 20px;
+}
+
+.gn-chooseObjectDialog {
+    z-index: 1100;
+}
+
+.gn-chooseObjectDialogTable {
+    margin-top: 15px;
+}
+
+.gn-chooseObjectDialogExpandedObjectsContainer {
+    padding-left: 20px;
+}
+
+.gn-chooseObjectDialogExpandedObjectsRow {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.gn-richTextEditorSubHeader {
+    font-size: 10px;
+}
+
+.wysiwgEditor h4 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.wysiwgEditor h5 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.gn-textDanger {
+    color: #a94442;
+}
+
+.gn-dialogPagingContainer {
+    position: absolute;
+    left: 18px;
+}
+
+.gn-statisticsSubValue {
+    padding-left: 20px;
+}
+
+/** Home **/
+.gn-homeTileContainer {
+    padding: 10px;
+}
+
+.gn-homeTileContainer a:hover {
+    text-decoration: none;
+}
+
+.gn-homeTile {
+    height: 250px;
+    -webkit-box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+    -moz-box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+    box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+}
+
+.gn-homeTileIcon {
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 96px;
+}
+
+.gn-homeTileTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
+}
+
+.gn-homeTileSubtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.gn-homeProjectSwitch {
+    display: inline-block;
+}
+
+.gn-homeProjectSwitch i {
+    font-size: 22px;
+}
+
+.gn-homeProjectSwitchable {
+    cursor: pointer;
+}
+
+@media(min-width:1600px) {
+    .gn-homeTile {
+        height: 300px;
+    }
+
+    .gn-homeTileIcon {
+        padding-top: 50px;
+    }
+}
+
+@media(min-width:2000px) {
+    .gn-homeTile {
+        height: 350px;
+    }
+
+    .gn-homeTileIcon {
+        padding-top: 70px;
+    }
+}
+
+
+
+.gn-taskTile {
+    color: #FFFFFF;
+    background-color: #005a5a; 
+    border: 1px solid #004141;
+}
+
+.gn-aikaTile {
+    color: #FFFFFF;
+    background-color: #5a0056;
+    border: 1px solid #350032;
+}
+
+.gn-kortistoTile {
+    color: #FFFFFF;
+    background-color: #BB0000;
+    border: 1px solid #AA0000;
+}
+
+.gn-styrTile {
+    color: #FFFFFF;
+    background-color: #bb7000;
+    border: 1px solid #945900;
+}
+
+.gn-evneTile {
+    color: #FFFFFF;
+    background-color: #00bb9c;
+    border: 1px solid #007e69;
+}
+
+.gn-kirjaTile {
+    color: #FFFFFF;
+    background-color: #006b24;
+    border: 1px solid #005e1f;
+}
+
+.gn-kartaTile {
+    color: #FFFFFF;
+    background-color: #00256b;
+    border: 1px solid #00146b;
+}
+
+.gn-implementationStatusTile {
+    color: #FFFFFF;
+    background-color: #c7ad1a;
+    border: 1px solid #b3990b;
+}
+
+.gn-exportSettingsTile {
+    color: #FFFFFF;
+    background-color: #010033;
+    border: 1px solid #010022;
+}
+
+.gn-projectSettingsTile {
+    color: #FFFFFF;
+    background-color: #330009;
+    border: 1px solid #47000d;
+}
+
+.gn-copyToClipboardToolTipContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipText,.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipTextBottom {
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -50%;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipText {
+    bottom: 120%;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipTextBottom {
+    top: 120%;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipText::after, .gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipTextBottom::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipText::after {
+    border-color: #555 transparent transparent transparent;
+    top: 100%;
+}
+
+.gn-copyToClipboardToolTipContainer .gn-copyToClipboardToolTipTextBottom::after {
+    border-color: transparent transparent #555 transparent;
+    bottom: 100%;
+}
+
+/** Timeline **/
+.gn-timelineHeader {
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.gn-timelineHr {
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.gn-timelineSmallScreenSpacer {
+    margin-top: 20px;
+}
+
+/** Personal Data page **/
+.gn-personalDataButtons {
+    margin-top: 10px;
+}
+
+.gn-personalDataButtons button {
+    min-width: 175px;
+}
+
+.gn-personalDataButtons a {
+    min-width: 175px;
+    display: inline-block;
+}
+
+.gn-personalDataDeleteForm {
+    display: inline-block;
+}
+
+/** User Management **/
+.gn-createUserButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gn-userRolesChangeButtonContainer {
+    text-align: center;
+}
+
+/** Project Management **/
+.gn-createProjectButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gn-defaultProjectRow {
+    font-weight: bold;
+}
+
+/** Preferences **/
+
+.gn-preferencesLoading {
+    font-size: 12px;
+}
+
+.gn-preferencesWidgetContainer {
+    padding-top: 12px;
+}
+
+/** References **/
+.gn-detaildReferenceContainer {
+    position: relative;
+}
+
+.gn-detailedReferenceCount {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.gn-detaildReferenceCallout {
+    position: absolute;
+    max-width: 300px;
+    border: 1px solid #CCC;
+    left: 35px;
+    top: 8px;
+    background-color: white;
+    transform: translate(0, -50%);
+    border-radius: 4px;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+    color: #333;
+}
+
+.gn-detaildReferenceCalloutClose {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+}
+
+.gn-detaildReferenceCallout div {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.gn-detaildReferenceCallout:before 
+{
+    content: "";
+    position: absolute;
+    top: calc(50% - 9.5px);
+    left: -9px;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent; 
+    border-right: 9px solid #CCC; 
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+.gn-detaildReferenceCallout:after
+{
+    content: "";
+    position: absolute;
+    top: calc(50% - 9px);
+    left: -8px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right: 8px solid white; 
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+/** Flex Field Database Overview **/
+.gn-flexFieldOverviewObjectTileIcon {
+    margin-top: 25px;
+}
+
+.gn-flexFieldOverviewTileImageContainer {
+    height: 93px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.gn-flexFieldOverviewObjectImage {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.gn-flexFieldOverviewTileContainer {
+    height: 180px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.gn-flexFieldOverviewTileIcon, .gn-flexFieldOverviewTileName {
+    color: #333;
+}
+.gn-flexFieldOverviewTileContainer a:hover, .gn-flexFieldOverviewTileContainer a:active {
+    text-decoration: none;
+}
+
+.gn-flexFieldOverviewTile {
+    background-color: #FAFAFA;
+    border: 1px solid #DCDCDC;
+    height: 100%;
+    -webkit-box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+    -moz-box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+    box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+}
+
+.gn-flexFieldObjectRow {
+    margin-left: -9px;
+    margin-right: -9px;
+}
+
+.gn-flexFieldOverviewTileObjectHovering {
+    outline: 2px dashed rgb(128, 128, 128);
+}
+
+.gn-flexFieldOverviewTileDropToParent {
+    background-color: #FAFAFA;
+    border: 1px solid #DCDCDC;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+    -moz-box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+    box-shadow: 0px 0px 30px -8px rgba(200,200,200,1);
+    margin-top: 10px;
+    height: 82px;
+    font-size: 50px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.gn-flexFieldMoveObjectDialogListExpandIndicator {
+    width: 15px;
+    display: inline-block;
+}
+
+.gn-flexFieldMoveObjectDialogListActive {
+    background-color: #EEEEEE;
+}
+
+.gn-flexFieldMoveObjectDialogListCurrentFolderIndicator {
+    font-style: italic;
+}
+
+.gn-flexFieldMoveObjectDialogListRootLevel {
+    padding-left: 10px !important;
+}
+
+.gn-flexFieldMoveObjectDialogList {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.gn-flexFieldMoveObjectDialogListEntry {
+    padding: 5px;
+}
+
+@media(min-width:768px) {
+    .gn-flexFieldOverviewTileDropToParent {
+        float: right;
+        width: 125px;
+        margin-top: -40px;
+    }
+}
+
+.gn-flexFieldMoveObjectDialogContent {
+    overflow-y: auto;
+    max-height: 150px;
+}
+
+@media(min-height:400px) {
+    .gn-flexFieldMoveObjectDialogContent {
+        max-height: 210px;
+    }
+}
+
+@media(min-height:550px) {
+    .gn-flexFieldMoveObjectDialogContent {
+        max-height: 320px;
+    }
+}
+
+@media(min-height:700px) {
+    .gn-flexFieldMoveObjectDialogContent {
+        max-height: 500px;
+    }
+}
+
+@media(min-height:900px) {
+    .gn-flexFieldMoveObjectDialogContent {
+        max-height: 700px;
+    }
+}
+
+@media(min-height:1200px) {
+    .gn-flexFieldMoveObjectDialogContent {
+        max-height: 1000px;
+    }
+}
+
+.gn-flexFieldOverviewFolderDropzone {
+    width: 100%;
+    height: 165px;
+}
+
+.gn-flexFieldOverviewFolderDropzone .dz-preview {
+    margin: 0px !important;
+}
+
+.gn-flexFieldFolderUploadIndicatorImage {
+    position: absolute;
+    bottom: 60px;
+    left: calc(50% - 34px);
+    font-size: 68px;
+    pointer-events: none;
+}
+
+.gn-flexFieldOverviewObjectButtons {
+    height: 25px;
+    width: 100%;
+    text-align: right;
+    padding-right: 4px;
+    padding-top: 4px;
+}
+
+.gn-flexFieldOverviewTileIcon {
+    width: 100%;
+    text-align: center;
+    font-size: 68px;
+}
+
+.gn-flexFieldOverviewTileName {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.gn-flexFieldOverviewExportButton {
+    margin-left: 25px;
+}
+
+.gn-flexFieldOverviewExportDialogLoadingContent {
+    text-align: center;
+    font-size: 32px;
+    padding-top: 15px;
+}
+
+
+.gn-flexFieldOverviewExportDialogFieldList {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+@media(min-height:600px) {
+    .gn-flexFieldOverviewExportDialogFieldList {
+        max-height: 250px;
+    }
+}
+
+@media(min-height:700px) {
+    .gn-flexFieldOverviewExportDialogFieldList {
+        max-height: 350px;
+    }
+}
+
+@media(min-height:900px) {
+    .gn-flexFieldOverviewExportDialogFieldList {
+        max-height: 550px;
+    }
+}
+
+@media(min-height:1200px) {
+    .gn-flexFieldOverviewExportDialogFieldList {
+        max-height: 800px;
+    }
+}
+
+@media(min-height:1800px) {
+    .gn-flexFieldOverviewExportDialogFieldList {
+        max-height: 1400px;
+    }
+}
+
+.gn-flexFieldOverviewImportFieldValueDialog {
+    width: 90%;
+}
+
+.gn-flexFieldOverviewImportFieldValueDropzone {
+    text-align: center;
+    padding-top: 60px !important;
+}
+
+.gn-flexFieldOverviewImportFieldValueLoadingContainer {
+    text-align: center;
+    font-size: 24px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.gn-flexFieldOverviewImportFieldValueTableContainer {
+    max-height: 30vh;
+    max-width: 100%;
+    overflow: auto;
+}
+
+@media(min-height:300px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 45vh;
+    }
+}
+
+@media(min-height:400px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 55vh;
+    }
+}
+
+@media(min-height:600px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 65vh;
+    }
+}
+
+@media(min-height:700px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 70vh;
+    }
+}
+
+@media(min-height:900px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 75vh;
+    }
+}
+
+@media(min-height:1200px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 80vh;
+    }
+}
+
+@media(min-height:1800px) {
+    .gn-flexFieldOverviewImportFieldValueTableContainer {
+        max-height: 84vh;
+    }
+}
+
+.gn-flexFieldOverviewImportFieldValueTableNewValue {
+    background-color: #d4fcbc;
+}
+
+.gn-flexFieldOverviewImportFieldValueTableOldValue {
+    background-color: #fbb6c2;
+    text-decoration: line-through;
+}
+
+.gn-flexFieldOverviewImportFieldModeToggle {
+    float: left;
+}
+
+/** Flex Field Form **/
+.gn-flexFieldObjectFormOpenImageLink {
+    position: absolute;
+    top: 0px;
+    left: 170px;
+}
+
+@media(min-width:768px) {
+    .gn-flexFieldObjectFormImageColumn {
+        border-right: 1px solid #CCCCCC;
+    }
+}
+
+@media(max-width:767px) {
+    .gn-flexFieldObjectFormImageColumn {
+        border-bottom: 1px solid #CCCCCC;
+        margin-bottom: 10px;
+    }
+}
+
+.gn-flexFieldObjectFormImageContainer {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 96px;
+    position: relative;
+}
+
+.gn-flexFieldObjectImage {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: -8px;
+}
+
+.gn-flexFieldObjectFormImageDropzone {
+    position:absolute;
+    width: 149px;
+    height: 149px;
+    min-height: 149px !important;
+    z-index: 5;
+    background-color: transparent !important;
+    border: 0px !important;
+    padding: 0px !important;
+    top: 0px;
+    left: 0px;
+}
+
+.gn-dropzoneFileHover {
+    -webkit-box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+    -moz-box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+    box-shadow: 0px 0px 53px -8px rgba(143,143,143,1);
+}
+
+.gn-flexFieldObjectFormImagePlaceholder {
+    margin-top: 25px;
+}
+
+.gn-flexFieldObjectFormFieldButton, .gn-flexFieldObjectFormFieldGroupButton {
+    margin-right: 5px;
+    display: inline-block;
+    width: 12px;
+}
+
+.gn-flexFieldObjectFormFieldGroupButton {
+    font-size: 14px;
+}
+
+.gn-flexFieldObjectFormFieldGroupFieldList {
+    padding-left: 26px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+}
+
+.gn-flexFieldObjectFormRichText {
+    max-height: 200px !important;
+    height: 200px !important;
+}
+
+.gn-flexFieldObjectFormRelatedList {
+    list-style: none;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+.gn-flexFieldObjectFormLangaugeKeysWarningOnDelete {
+    font-weight: bold;
+}
+
+.gn-flexFieldObjectFormCustomizedExportTemplateWarningOnDelete {
+    font-weight: bold;
+}
+
+@media(min-width:990px) {
+    .gn-flexFieldObjectExportResultDialog {
+        width: 900px;
+    }
+}
+
+@media(min-width:1190px) {
+    .gn-flexFieldObjectExportResultDialog {
+        width: 1100px;
+    }
+}
+
+.gn-flexFieldObjectExportResultTextarea {
+    resize: none;
+    height: 200px;
+}
+
+.gn-flexFieldObjectExportResultErrorListHeader {
+    margin-top: 10px;
+}
+
+.gn-flexFieldObjectExportResultErrorList {
+    overflow: auto;
+    max-height: 15px;
+}
+
+@media(min-height:500px) {
+    .gn-flexFieldObjectExportResultTextarea {
+        height: 165px !important;
+    }
+
+    .gn-flexFieldObjectExportResultErrorList {
+        max-height: 25px;
+    }
+}
+
+@media(min-height:700px) {
+    .gn-flexFieldObjectExportResultTextarea {
+        height: 350px !important;
+    }
+
+    .gn-flexFieldObjectExportResultErrorList {
+        max-height: 40px;
+    }
+}
+
+@media(min-height:900px) {
+    .gn-flexFieldObjectExportResultTextarea {
+        height: 530px !important;
+    }
+
+    .gn-flexFieldObjectExportResultErrorList {
+        max-height: 60px;
+    }
+}
+
+@media(min-height:1200px) {
+    .gn-flexFieldObjectExportResultTextarea {
+        height: 700px !important;
+    }
+
+    .gn-flexFieldObjectExportResultErrorList {
+        max-height: 150px;
+    }
+}
+
+.gn-flexFieldObjectInventoryItemNameColumn {
+    width: 50%;
+}
+
+.gn-flexFieldObjectTableActionColumn {
+    width: 5%;
+}
+
+/** Flex Field Manage Templates **/
+.gn-flexFieldCreateTemplateButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/** Kortisto **/
+.gn-kortistoSkillNameColumn {
+    width: 95%;
+}
+
+/** Kirja **/
+.gn-kirjaNameCol {
+    padding-left: 0px;
+}
+
+@media(max-width:768px) {
+    .gn-kirjaButtonCol {
+        padding-left: 0px;
+    }
+}
+
+@media(min-width:768px) {
+    .gn-kirjaButtonCol {
+        margin-top: 20px;
+        text-align: right;
+    }
+}
+
+@media(min-width:768px) {
+    .gn-kirjaAlertTextCol {
+        padding-top: 8px;
+    }
+
+    .gn-kirjaAlertButtonCol {
+        text-align: right;
+    }
+}
+
+@media(max-width:768px) {
+    .gn-kirjaAlertButtonCol {
+        margin-top: 10px;
+    }
+}
+
+.gn-kirjaPageNameInput {
+    height: 37px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.gn-kirjaPageContent {
+    margin-top: 20px;
+}
+
+#gn-kirjaPageContainer ins, #gn-kirjaReviewContainer ins {
+    text-decoration: none;
+    background-color: #d4fcbc;
+}
+
+#gn-kirjaPageContainer del, #gn-kirjaReviewContainer del {
+    text-decoration: line-through;
+    background-color: #fbb6c2;
+}
+
+.gn-kirjaPageRichTextEditor {
+    max-height: 800px !important;
+    height: 800px !important;
+}
+
+@media(max-height:700px) {
+    .gn-kirjaPageRichTextEditor {
+        max-height: 450px !important;
+        height: 450px !important;
+    }
+}
+
+@media(max-height:900px) {
+    .gn-kirjaPageRichTextEditor {
+        max-height: 650px !important;
+        height: 650px !important;
+    }
+}
+
+.gn-kirjaPageContentFormats h4 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.gn-kirjaPageContentFormats h5 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.gn-kirjaPageBrokenLinkList {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.gn-kirjaButtonContainer {
+    display: inline-block;
+}
+
+.gn-kirjaSidebarContainer {
+    display: inline-block;
+    position: relative;
+}
+
+.gn-kirjaSidebarButton {
+    display: inline-block;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.gn-kirjaSidebar {
+    text-align: left;
+    position:absolute; 
+    top: 30px; 
+    left:-255px;
+    height: 850px; 
+    width: 300px;
+    z-index: 10;
+}
+
+.gn-kirjaSidebar .panel-body {
+    height: 100%;
+}
+
+.gn-kirjaSidebarContent {
+    height: calc(100% - 80px);
+    overflow-y: auto;
+}
+
+@media(max-height:700px) {
+    .gn-kirjaSidebar {
+        height: 500px;
+    }
+}
+
+@media(max-height:900px) {
+    .gn-kirjaSidebar {
+        height: 700px;
+    }
+}
+
+@media(max-width:768px) {
+    .gn-kirjaSidebar {
+        left:-115px;
+    }
+}
+
+@media(min-width:768px) {
+    .gn-kirjaSidebar {
+        left:-255px;
+    }
+}
+
+.gn-kirjaSidebarReferenceType {
+    float: right;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.gn-kirjaSidebarList {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 8px;
+    max-height: 152px;
+    overflow-y: auto;
+}
+
+.gn-kirjaSidebarListLink {
+    display: inline-block;
+    white-space: nowrap;
+    width: calc(100% - 90px);
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+@media(max-height:700px) {
+    .gn-kirjaSidebarList {
+        max-height: 75px;
+    }
+}
+
+@media(max-height:900px) {
+    .gn-kirjaSidebarList {
+        max-height: 110px;
+    }
+}
+
+.gn-kirjaAttachmentFilename {
+    display: inline-block;
+    width: 220px;
+    overflow-x: hidden;
+    padding-right: 10px;
+    text-overflow: ellipsis;
+}
+
+.gn-kirjaAttachmentText {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.gn-kirjaAttachmentDropzone {
+    height: 70px;
+    border: 1px dashed #CCCCCC;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 25px;
+    margin-top: 10px;
+    min-height: 70px !important;
+}
+
+.gn-kirjaSidebarOpenOverview {
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 20px);
+}
+
+.gn-kirjaSidebarWordCount {
+    float: right;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+gn-kirjaTableOfContent {
+    display: block;
+    width: 300px;
+    height: 32px;
+    background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+
+.gn-kirjaTableOfContentTransformed {
+    background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+
+.gn-kirjaTableOfContentTransformedHeader {
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.gn-kirjaTableOfContentTransformed ul {
+    padding-left: 25px;
+}
+
+
+/** Version, Review Shared */
+.gn-kirjaVersionReviewDialogList {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+@media(min-height:500px) {
+    .gn-kirjaVersionReviewDialogList {
+        max-height: 330px !important;
+    }
+}
+
+@media(min-height:700px) {
+    .gn-kirjaVersionReviewDialogList {
+        max-height: 530px !important;
+    }
+}
+
+@media(min-height:900px) {
+    .gn-kirjaVersionReviewDialogList {
+        max-height: 730px !important;
+    }
+}
+
+@media(min-height:1100px) {
+    .gn-kirjaVersionReviewDialogList {
+        max-height: 930px !important;
+    }
+}
+
+@media(min-height:1200px) {
+    .gn-kirjaVersionReviewDialogList {
+        max-height: 1030px !important;
+    }
+}
+
+gn-kirjacomment {
+    background-color: #d9edf7;
+}
+
+.gn-kirjaCommentContainer, .gn-kirjaMergeTagContainer {
+    position: relative;
+}
+
+.gn-kirjaCommentCallout, .gn-kirjaMergeTagCallout {
+    position: absolute;
+}
+
+.gn-kirjaCommentCalloutContent {
+    margin-bottom: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+}
+
+.gn-kirjaCommentCalloutText {
+    white-space: pre-wrap;
+}
+
+.gn-kirjaCommentCalloutContent .panel-title {
+    align-self: center;
+    margin-right: 10px;
+}
+
+.gn-kirjaCommentCalloutContent .panel-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gn-kirjaMergeTagCallout {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    padding: 3px 7px;
+}
+
+.gn-kirjaMergeTagCallout a {
+    color: black;
+}
+
+/** Karta **/
+.gn-kartaMapDropzone {
+    width: 100%;
+    height: 300px;
+}
+
+.gn-kartaMapProcessing {
+    font-size: 68px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.gn-kartaMapProcessingText {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.gn-kartaMapUploadIndicatorImage {
+    position: absolute;
+    bottom: 110px;
+    left: calc(50% - 34px);
+    font-size: 68px;
+    pointer-events: none;
+}
+
+@media(min-width:768px) {
+    .gn-kartaSwitchMapContainer {
+        text-align: right;
+    }
+}
+
+.gn-kartaTopBarHintIcon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.gn-kartaTopBarHintIcon i {
+    top: 15px;
+}
+
+.gn-kartaExportButton {
+    margin-right: 25px;
+}
+
+.gn-kartaSwitchMapButton, .gn-kartaSwitchChapterButton {
+    margin-top: 10px;
+}
+
+.gn-kartaMap {
+    width: 100%;
+    height: 700px;
+}
+
+.gn-kartaMapLoading {
+    font-size: 24px;
+}
+
+.gn-kartaFilterRow {
+    margin-bottom: 10px;
+}
+
+.gn-kartaVisibleCheckbox {
+    margin-left: 0px !important;
+    margin-right: 10px;
+}
+
+.gn-kartaVisibleCheckboxDisabled {
+    cursor: default;
+}
+
+.gn-kartaTreeView {
+    list-style: none;
+    padding-left: 15px;
+    height: 180px;
+    overflow-y: auto;
+}
+
+.gn-kartaTreeViewEntry {
+    height: 30px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.gn-kartaTreeViewEntry a {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gn-kartaTreeViewEntrySmall {
+    width: calc(100% - 25px) !important;
+}
+
+.gn-kartaTreeViewEntrySelected {
+    background-color: #EEEEEE;
+}
+
+.gn-kartaTreeViewEntryMarkerEye {
+    float: right;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.gn-kartaTreeViewSearchContainer {
+    padding-left: 20px; 
+    margin-bottom: 15px; 
+    margin-top: 15px;
+}
+
+.gn-kartaIconShadowImage {
+    position: absolute; 
+    left: 0px; 
+    z-index: -1;
+}
+
+.gn-kartaDailyRoutineTimeLabel {
+    font-size: 14px;
+}
+
+.gn-kartaIconLabel, .gn-kartaDailyRoutineTimeLabel {
+    color: #FFF;
+    position: absolute;
+    left: -37px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+    text-align: center;
+    display: none;
+    white-space: nowrap;
+    text-shadow: 0 0 1px black;
+}
+
+.gn-kartaShowLabels .gn-kartaIconLabel, .gn-kartaShowLabels .gn-kartaDailyRoutineTimeLabel {
+    display: block !important;
+}
+
+.gn-kartaPopupContent {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.gn-kartaPopupImageContainer {
+    min-width: 150px;
+}
+
+.gn-kartaPopupImage {
+    max-width: 150px;
+}
+
+.gn-kartaPopupButtons {
+    margin-top: 10px;
+    width: 100%;
+    text-align: right;
+}
+
+.gn-kartaManageDailyRoutine, .gn-setExportNameButton, .gn-kartaCopyMarkerLink, .gn-kartaEditMarkerGeometryButton, .gn-kartaEditMarkerButton, .gn-kartaMarkAsImplementedMarkerButton {
+    margin-right: 5px;
+}
+
+.gn-kartaMarkerHasExportName {
+    color: #19b643 !important;
+}
+
+.gn-kartaGeometryDeleteButton {
+    float: left;
+}
+
+path.leaflet-interactive {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+}
+
+.gn-kartaGeometryEditable {
+    cursor: pointer !important;
+}
+
+.gn-kartaAddEditEventEditScript {
+    margin-left: 5px;
+}
+
+.gn-kartaAddEditEventDeleteScript {
+    float: right;
+    padding-top: 10px;
+}
+
+.gn-kartaDailyRoutinePopupLabel {
+    display: inline-block;
+    width: 220px;
+    margin-bottom: 5px;
+}
+
+.gn-kartaDailyRoutineCalloutIndiciatorIcon {
+    margin-right: -10px; 
+    font-size: 20px; 
+    top: 12px !important;
+}
+
+.gn-kartaDailyRoutineCallout {
+    position: absolute;
+    z-index: 1001;
+    top: 58px;
+    right: 15px;
+    text-align: left;
+    min-width: 700px;
+}
+
+@media(max-width:768px) {
+    .gn-kartaDailyRoutineCallout {
+        min-width: 100px;
+        max-width: 100%;
+        right: 0px;
+        overflow-x: auto;
+    }
+
+    .gn-kartaDailyRoutineCalloutTableContainer {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media(min-width:1200px) {
+    .gn-kartaDailyRoutineCallout {
+        min-width: 900px;
+    }
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-colorpicker, .leaflet-draw-toolbar .leaflet-draw-draw-colorpicker {
+    background-position: -210px -1px;
+}
+
+/** Tale **/
+.node .label.tale_PlayerText, .gn-nodePlayerText .gn-labelInsert {
+    color: #8c6;
+}
+
+.node .label.tale_NpcText, .gn-nodeNpcText .gn-labelInsert {
+    color: #e23b25;
+}
+
+.gn-taleAddChoice {
+    margin-right: 0.8em !important;
+}
+
+.gn-taleAddChoice:hover {
+    background-color: rgb(33, 100, 0);
+}
+
+.gn-taleChoiceHasCondition, .gn-taleChoiceIsRepeatable {
+    color: #e2b025;
+}
+
+.gn-taleChoiceConditionText {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: auto;
+}
+
+.node .label.default_Action, .gn-nodeAction .gn-labelInsert {
+    color: #8fb2e4;
+}
+
+.node .label.default_Reference, .gn-nodeReference .gn-labelInsert {
+    color: #11c9b9;
+}
+
+.gn-referenceNodeLink {
+    margin-top: 1em;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: auto;
+}
+
+.gn-referenceNodeLink a {
+    color: #FFF;
+}
+
+.gn-referenceText {
+    height: calc(100% - 4.2em) !important;
+}
+
+.gn-taleChoiceTextCell {
+    width: 73%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gn-taleChoiceTable {
+    width: 100%;
+    height: calc(100% - 2em);
+    margin-top: 1em;
+    table-layout: fixed;
+}
+
+.gn-taleChoiceTable tr {
+    padding-bottom: 1.4em;
+    padding-top: 1.4em;
+}
+
+.gn-taleChoiceTable input {
+    margin-top: 0px !important;
+}
+
+.gn-taleChoiceTable a {
+    color: #ffffff;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.gn-taleChoiceIcon {
+    pointer-events: auto;
+    cursor: pointer;
+    margin-left: 0.35em;
+}
+
+.gn-nodeActionOpenObject, .gn-nodeActionOpenChooseObject {
+    margin-left: 0.35em;
+}
+
+.gn-actionNodeObjectSelectionSeperator {
+    margin-top: 0.25em;
+    margin-left: 0.35em;
+}
+
+.gn-actionNodeTimeOverflow {
+    overflow: visible !important;
+}
+
+.gn-actionNodeTimeContainer .dropdown-menu {
+    background-color: #666;
+}
+
+.gn-actionNodeTimeContainer .btn-link:hover {
+    background-color: #555 !important;
+}
+
+.gn-actionNodeTimeContainer .btn-link:active, .gn-actionNodeTimeContainer .btn-link:focus {
+    background-color: #345 !important;
+}
+
+.gn-actionNodeTimeContainer .gn-timePickerInput {
+    margin-bottom: 0.6em;
+}
+
+/** State Machine **/
+.stateNode {
+    fill: #666;
+    stroke-width: 3px;
+    stroke: #333;
+}
+
+.stateNode:hover {
+    opacity: 1 !important;
+}
+
+.stateStartNodeDragHandle {
+    transform: translate(42px, 40px) scale(1.2);
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.stateNodeDragHandle {
+    transform: translate(60px, 50px) scale(1.1);
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.stateNodeView {
+    position: absolute;
+    background-color: transparent;
+	/* Make sure events are propagated to the JointJS element so, e.g. dragging works.*/
+	pointer-events: none;
+	-webkit-user-select: none;
+    user-select: none;
+	box-sizing: border-box;
+	z-index: 2;
+	overflow: hidden;
+}
+
+.stateNodeText {
+    pointer-events: all;
+    background-color: transparent;
+    border: 0;
+    appearance: none;
+    border:none;
+    text-align: center;
+    color: white;
+    background-color: #456;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+.stateEndNodeOuter {
+    fill: none;
+    stroke-width: 3px;
+    stroke: #333;
+}
+
+.stateNodeView .delete {
+    color: white;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.stateNodeEndView .delete {
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.stateNodeStateView .delete {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(200%);
+}
+
+.stateNodeStateView .settings {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(150%) translateY(-180%);
+    font-size: 1.4em;
+    color: white;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.gn-stateDescription {
+    resize: vertical;
+}
+
+.gn-stateMachineInfoIcon {
+    font-size: 18px;
+}
+
+.gn-stateMachineChildObjectsList {
+    max-height: 260px;
+    overflow: auto;
+}
+
+/* Hide vertex link drag */
+#gn-stateMachineContainer .marker-vertex-group {
+    display: none !important;
+}
+
+#gn-stateMachineContainer .connection-wrap {
+	cursor: pointer;
+}
+
+/** Project Config **/
+
+.gn-projectConfigTextArea {
+    margin-top: 10px;
+    height: 150px !important;
+}
+
+.gn-projectConfigNpcOutsideTimespanList {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/** Aika Chapter Detail **/
+.gn-aikaChapterDetailButton {
+    width: 100%;
+    margin-top: 0.8em;
+    padding: 0.25em;
+}
+
+.gn-aikaChapterFinishPort {
+    display: inline-block;
+}
+
+.node .label.aika_Quest, .gn-nodeQuestDrag .gn-labelInsert {
+    color: #9cdcfe;
+}
+
+.gn-aikaNodeQuestMain {
+	margin-right: 5px;
+	color: #9cdcfe;
+	font-size: 18px;
+}
+
+/** Aika Quest **/
+.gn-aikaQuestExpandableContainer {
+    padding-left: 25px;
+}
+
+.gn-aikaQuestDescription {
+    height: 130px !important;
+    resize: none;
+}
+
+.gn-aikaNodeQuestName {
+    display: block;
+    color: #FFFFFF;
+    margin-top: 0.6em;
+    padding-left: 0.35em;
+    pointer-events: auto;
+}
+
+.gn-aikaNodeQuestName:hover {
+    color: #FFFFFF;
+}
+
+.node .label.aika_ChapterDetail, .gn-nodeChapterDetailDrag .gn-labelInsert {
+    color: #4ec990;
+}
+
+.node .label.aika_Text, .gn-aikaNodeText .gn-labelInsert {
+    color: #8c6;
+}
+
+.node .label.aika_AllDone, .gn-aikaNodeAllDone .gn-labelInsert {
+    color: #e23b25;
+}
+
+
+.gn-aikaQuestFormRelatedList {
+    list-style: none;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+.gn-aikaActionChangeQuestDialogValidationResult, .gn-aikaActionChangeQuestDialogMissingPermissions {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/** Aika Quest List **/
+.gn-aikaCreateQuestButton {
+    margin-top: 10px;
+}
+
+/** Task Board List **/
+.gn-taskBoardListTitle {
+    margin-top: 30px;
+}
+
+.gn-taskboardListSubNode a {
+    padding-left: 40px !important;
+}
+
+/** Task type **/
+
+.gn-taskTypeListTitle {
+    margin-top: 30px;
+}
+
+.gn-taskTypeColorIndicator {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #333;
+}
+
+.gn-taskTypeDefaultRow {
+    font-weight: bold;
+}
+
+/** Task Board **/
+.gn-taskHeaderBoardDates {
+    font-size: 18px;
+}
+
+.gn-taskSelectBoardDates {
+    font-size: 12px;
+}
+
+.gn-taskBoardLoading {
+    font-size: 24px;
+}
+
+@media(min-width:768px) {
+    .gn-taskSwitchBoardContainer {
+        text-align: right;
+    }
+}
+
+.gn-taskSwitchBoardButton {
+    margin-top: 10px;
+}
+
+@media(min-width:990px) {
+    .gn-taskDialog {
+        width: 900px;
+    }
+}
+
+@media(min-width:1190px) {
+    .gn-taskDialog {
+        width: 1100px;
+    }
+}
+
+.gn-taskDescriptionLinkHint {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.gn-taskDialogDescription {
+    height: 300px !important;
+}
+
+.gn-tasksGroupContainer {
+    margin-top: 20px;
+}
+
+.gn-tasksStatusColumnHeader {
+    font-size: 20px;
+}
+
+.gn-taskGroupRow {
+    margin-top: 10px;
+}
+
+.gn-taskGroupColumn {
+    padding-right: 0px;
+    padding-left: 0px;
+    border-right: 10px solid #FFF;
+}
+
+.gn-taskGroupBackgroundColor {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #EEE;
+    z-index: -100;
+}
+
+@media(max-width:768px) {
+    .gn-taskGroupColumn {
+        padding-top: 10px;
+        min-height: 87px;
+    }
+}
+
+.gn-taskGroupColumnTaskDrop {
+    position: absolute; 
+    top: 0px; 
+    background-color: transparent; 
+    width: calc(100% - 10px);
+}
+
+.gn-taskGroupColumnTaskHover {
+    background-color: #E0E0E0 !important;
+}
+
+.gn-taskGroupColumnTaskContainer {
+    background-color: #EEE;
+}
+
+@media(max-width:768px) {
+    .gn-taskGroupColumnTaskContainer {
+        min-height: 87px;
+    }
+}
+
+.gn-taskGroupExpandCollapse {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+}
+
+.gn-taskGroupCard {
+    max-width: 250px;
+    background-color: #FFFFFF;
+    border-left-width: 5px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    padding: 8px;
+    margin-left: 25px;
+    display: inline-block;
+    width: 78%;
+}
+
+.gn-taskCard {
+	border-left-width: 5px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-style: solid;
+	display: inline-block;
+	margin: 5px;
+	background-color: #FFF;
+    padding: 8px;
+    max-width: calc(100% - 20px);
+}
+
+.gn-taskGroupCardExpanded {
+    height: 120px;
+}
+
+.gn-taskGroupCardCollapsed {
+    height: 38px;
+}
+
+.gn-taskCardTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gn-taskCardNumber {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.gn-taskGroupTitle {
+    font-size: 16px;
+}
+
+.gn-taskTitle {
+    font-size: 14px;
+}
+
+.gn-taskTitleCollapsed {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gn-taskSelectLine {
+    margin-top: 5px;
+}
+
+.gn-taskCardSelect {
+    border: 0px !important;
+    box-shadow: none !important;
+    padding-left: 0px !important;
+}
+
+.gn-taskCardSelect[disabled] {
+    background-color: #FFF;
+}
+
+.gn-taskCard .gn-taskCardSelect {
+    font-size: 12px;
+}
+
+.gn-taskCreateTaskButton {
+	font-size: 12px;
+	position: absolute;
+	top: 95px;
+	left: calc(78% + 18px);
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+@media(max-width:768px) {
+    .gn-taskCreateTaskButton {
+        font-size: 14px;
+        top: 0px;
+        left: 300px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+@media(min-width:990px) {
+    .gn-taskCreateTaskButton {
+        top: 86px;
+        font-size: 14px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+}
+
+.gn-taskColumnCollapsedTaskCount {
+    padding: 8px;
+}
+
+.gn-taskDeleteButton, .gn-taskMoveToBoardButton {
+    float: left;
+}
+
+/** Implementation Status Overview **/
+.gn-implementationStatusOverviewContent {
+    margin-top: 20px;
+}
+
+.gn-implementationStatusOverviewLoading {
+    font-size: 20px;
+}
+
+/** Implementation compare dialog **/
+@media(min-width:990px) {
+    .gn-implementationCompareDialog {
+        width: 900px;
+    }
+}
+
+@media(min-width:1190px) {
+    .gn-implementationCompareDialog {
+        width: 1100px;
+    }
+}
+
+.gn-implementationCompareDialogLoading {
+    text-align:  center;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gn-implementationCompareDialogRow {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.gn-implementationCompareDialogExpandButton {
+    font-size: 12px;
+    display: inline-block;
+}
+
+.gn-implementationCompareDialogResultIndent {
+    margin-left: 17px;
+}
+
+.gn-implementationCompareDialogResultLabel {
+    display: inline-block;
+    min-width: 250px;
+    padding-right: 10px;
+}
+
+.gn-implementationCompareDialogResultText {
+    display: inline-block;
+    min-width: 250px;
+}
+
+.gn-implementationCompareDialogResultGroup {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.gn-implementationCompareDialogResultHasChildren {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.gn-implementationCompareDialogResultLog {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/** Evne **/
+.node .label.evne_Text, .gn-evneNodeText .gn-labelInsert {
+    color: #8c6;
+}
+
+
+/** Exporting Template Overview **/
+.gn-exportTemplateOverviewContent {
+    margin-top: 20px;
+}
+
+.gn-exportTemplateOverviewLoading {
+    font-size: 20px;
+}
+
+/** Exporting Template Form **/
+.gn-exportManageTemplateCodeEditorContainer, .gn-exportManageIncludeTemplateContainer {
+    margin-top: 20px;
+}
+
+.gn-exportManageTemplateCodeEditor, .gn-exportManageIncludeTemplateCodeEditor {
+    width: 100%;
+    height: 500px;
+}
+
+@media(min-height:1100px) {
+    .gn-exportManageTemplateCodeEditor, .gn-exportManageIncludeTemplateCodeEditor {
+        height: 700px;
+    }
+}
+
+.gn-exportManageTemplateLoading, .gn-exportManageIncludeTemplateLoading {
+    font-size: 20px;
+}
+
+.gn-exportManageTemplateInfoIcon {
+    font-size: 18px;
+}
+
+.gn-exportManageTemplateChildObjectsList {
+    max-height: 260px;
+    overflow: auto;
+}
+
+.gn-exportManageTemplateWarningOnDelete, .gn-exportManageIncludeTemplateWarningOnDelete {
+    font-weight: bold;
+}
+
+.gn-exportManageTemplatePlaceholderContainer, .gn-exportManageIncludeTemplateReferenceContainer {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.gn-exportManageTemplatePlaceholderTable, .gn-exportManageIncludeTemplateReferenceTable {
+    margin-bottom: 0px;
+}
+
+/** DateTime Events **/
+.gn-addEditEventLatestTimePicker {
+    border-top-right-radius: .25rem !important;
+    border-bottom-right-radius: .25rem !important;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/** Time Picker **/
+.gn-timePickerMainContainer {
+    position: relative;
+}
+
+.gn-timePickerMainContainerStyling .dropdown-menu {
+    margin-top: 35px;
+}
+
+.gn-timePickerMainStyling {
+    background-color: #FFF !important;
+}
+
+.gn-timePickerControlContainer {
+    display: flex;
+    align-items:center
+}
+
+.gn-timePickerSingleControlContainer {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-around;
+}
+
+.gn-timePickerSingleControlContainerHours {
+    margin-left: 12px;
+}
+
+.gn-timePickerInput {
+    width: 60px !important;
+    border-radius:.25rem !important;
+}
+
+.gn-timePickerSeperator {
+    width:15px;
+    text-align:center;
+}
+
+/** Choose Script Type Dialog **/
+.gn-scriptTypeDialogHeader {
+    font-weight: bold;
+}
+
+/** Code Script Editor **/
+.gn-codeScriptEditorDialog {
+    width: 95%;
+}
+
+/** Node Script Editor **/
+.gn-nodeScriptEditorDialog {
+    width: 95%;
+}
+
+.gn-nodeScriptEditorDialog .modal-body {
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+
+.gn-nodeScriptEditorContainer {
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+}
+
+@media(min-height:1300px) {
+    .gn-nodeScriptEditorContainer {
+		height: 900px;
+    }
+}

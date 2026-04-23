@@ -1,0 +1,1 @@
+this:play_animation("{{ action.animation }}")

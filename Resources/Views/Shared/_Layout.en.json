@@ -1,0 +1,20 @@
+{
+    "ToogleNavigation": "Toogle navigation",
+    "Home": "Home",
+    "Timeline": "Timeline",
+    "Tasks": "Tasks",
+    "Aika": "Quests",
+    "Kortisto": "Npcs",
+    "Styr": "Items",
+    "Evne": "Skills",
+    "Kirja": "Wiki",
+    "Karta": "Maps",
+    "ImplementationStatus": "Implementation state",
+    "ExportSettings": "Export",
+    "ProjectConfig": "Settings",
+
+    "PrivacyPolicy": "Privacy policy",
+    "LegalNotice": "Legal Notice",
+
+    "MomentLocale": "en"
+}

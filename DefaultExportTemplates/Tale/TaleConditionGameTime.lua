@@ -1,0 +1,1 @@
+GameTimeManager:new():get_cur_total_minute() {{ condition.operator }} {{ condition.total_minutes }}

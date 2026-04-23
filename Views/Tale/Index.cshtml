@@ -1,0 +1,276 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using GoNorth.Models.TaleViewModels
+
+@model TaleIndexViewModel
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = @Localizer["Tale"];
+}
+
+<div id="gn-taleDialogContainer">
+    <h2 data-bind="text: headerName">@Localizer["Tale"]</h2>
+
+    <!-- ko with: conditionDialog -->
+        @await Html.PartialAsync("~/Views/Shared/NodeConditionBase.cshtml")
+    <!-- /ko -->
+
+    <!-- Object Dialog -->
+    <!-- ko with: objectDialog -->
+        @await Html.PartialAsync("~/Views/Shared/ChooseObjectDialog.cshtml")
+    <!-- /ko -->
+
+    <!-- Node Dialog -->
+    @await Html.PartialAsync("~/Views/Shared/NodeGraphDialogs.cshtml")
+
+    <!-- Code Dialog -->
+    <!-- ko with: codeScriptDialog -->
+        @await Html.PartialAsync("~/Views/Shared/CodeScriptEditor.cshtml")
+    <!-- /ko -->
+
+    @if(User.IsInRole(RoleNames.ImplementationStatusTracker))
+    {
+        <!-- ko with: compareDialog -->
+            @await Html.PartialAsync("~/Views/ImplementationStatus/CompareDialog.cshtml")
+        <!-- /ko -->
+    }
+
+    <!-- Statistics dialog -->
+    <div class="modal fade" role="dialog" data-bind="modal: showStatisticsDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@Localizer["DialogStatistics"]</h4>
+                </div>
+                <div class="modal-body" data-bind="if: dialogStatistics">
+                    <div class="form-group">
+                        <label for="gn-totalWordCount" class="gn-clickable" data-bind="click: toggleDialogStatisticsWordCount">
+                            <i class="glyphicon glyphicon-triangle-right" data-bind="visible: !dialogStatisticsWordCountExpanded()"></i>
+                            <i class="glyphicon glyphicon-triangle-bottom" data-bind="visible: dialogStatisticsWordCountExpanded()"></i>
+                            @Localizer["TotalWordCount"]</label>
+                        <input type="text" class="form-control" id="gn-totalWordCount" placeholder="@Localizer["TotalWordCount"]" name="totalWordCount" data-bind="value: dialogStatistics().totalWordCount" readonly/>
+                    </div>
+                    <div class="gn-statisticsSubValue" data-bind="visible: dialogStatisticsWordCountExpanded">
+                        <div class="form-group">
+                            <label for="gn-playerWordCount">@Localizer["PlayerWordCount"]</label>
+                            <input type="text" class="form-control" id="gn-playerWordCount" placeholder="@Localizer["PlayerWordCount"]" name="playerWordCount" data-bind="value: dialogStatistics()['tale.PlayerText'].wordCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-npcWordCount">@Localizer["NpcWordCount"]</label>
+                            <input type="text" class="form-control" id="gn-npcWordCount" placeholder="@Localizer["NpcWordCount"]" name="npcWordCount" data-bind="value: dialogStatistics()['tale.NpcText'].wordCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-choiceWordCount">@Localizer["ChoiceWordCount"]</label>
+                            <input type="text" class="form-control" id="gn-choiceWordCount" placeholder="@Localizer["ChoiceWordCount"]" name="choiceWordCount" data-bind="value: dialogStatistics()['tale.Choice'].wordCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-referenceWordCount">@Localizer["ReferenceWordCount"]</label>
+                            <input type="text" class="form-control" id="gn-referenceWordCount" placeholder="@Localizer["ReferenceWordCount"]" name="referenceWordCount" data-bind="value: dialogStatistics()['default.Reference'].wordCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-actionWordCount">@Localizer["ActionWordCount"]</label>
+                            <input type="text" class="form-control" id="gn-actionWordCount" placeholder="@Localizer["ActionWordCount"]" name="actionWordCount" data-bind="value: dialogStatistics()['default.Action'].wordCount" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gn-totalConditionCount" class="gn-clickable" data-bind="click: toggleDialogStatisticsConditionCount">
+                            <i class="glyphicon glyphicon-triangle-right" data-bind="visible: !dialogStatisticsConditionCountExpanded()"></i>
+                            <i class="glyphicon glyphicon-triangle-bottom" data-bind="visible: dialogStatisticsConditionCountExpanded()"></i>
+                            @Localizer["TotalConditionCount"]
+                        </label>
+                        <input type="text" class="form-control" id="gn-totalConditionCount" placeholder="@Localizer["TotalConditionCount"]" name="totalConditionCount" data-bind="value: dialogStatistics().totalConditionCount" readonly/>
+                    </div>
+                    <div class="gn-statisticsSubValue" data-bind="visible: dialogStatisticsConditionCountExpanded">
+                        <div class="form-group">
+                            <label for="gn-conditionsFromNodeCount">@Localizer["ConditionsFromNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-conditionsFromNodeCount" placeholder="@Localizer["ConditionsFromNodeCount"]" name="conditionsFromNodeCount" data-bind="value: dialogStatistics()['default.Condition'].conditionCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-choiceConditionCount">@Localizer["ChoiceConditionCount"]</label>
+                            <input type="text" class="form-control" id="gn-choiceConditionCount" placeholder="@Localizer["ChoiceConditionCount"]" name="choiceConditionCount" data-bind="value: dialogStatistics()['tale.Choice'].conditionCount" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gn-totalNodeCount" class="gn-clickable" data-bind="click: toggleDialogStatisticsNodeCount">
+                            <i class="glyphicon glyphicon-triangle-right" data-bind="visible: !dialogStatisticsNodeCountExpanded()"></i>
+                            <i class="glyphicon glyphicon-triangle-bottom" data-bind="visible: dialogStatisticsNodeCountExpanded()"></i>
+                            @Localizer["TotalNodeCount"]
+                        </label>
+                        <input type="text" class="form-control" id="gn-totalNodeCount" placeholder="@Localizer["TotalNodeCount"]" name="totalNodeCount" data-bind="value: dialogStatistics().totalNodeCount" readonly/>
+                    </div>
+                    <div class="gn-statisticsSubValue" data-bind="visible: dialogStatisticsNodeCountExpanded">
+                        <div class="form-group">
+                            <label for="gn-playerNodeCount">@Localizer["PlayerNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-playerNodeCount" placeholder="@Localizer["PlayerNodeCount"]" name="playerNodeCount" data-bind="value: dialogStatistics()['tale.PlayerText'].nodeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-npcNodeCount">@Localizer["NpcNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-npcNodeCount" placeholder="@Localizer["NpcNodeCount"]" name="npcNodeCount" data-bind="value: dialogStatistics()['tale.NpcText'].nodeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-choiceNodeCount">@Localizer["ChoiceNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-choiceNodeCount" placeholder="@Localizer["ChoiceNodeCount"]" name="choiceNodeCount" data-bind="value: dialogStatistics()['tale.Choice'].nodeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-actionNodeCount">@Localizer["ActionNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-actionNodeCount" placeholder="@Localizer["ActionNodeCount"]" name="actionNodeCount" data-bind="value: dialogStatistics()['default.Action'].nodeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-conditionNodeCount">@Localizer["ConditionNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-conditionNodeCount" placeholder="@Localizer["ConditionNodeCount"]" name="conditionNodeCount" data-bind="value: dialogStatistics()['default.Condition'].nodeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gn-referenceNodeCount">@Localizer["ReferenceNodeCount"]</label>
+                            <input type="text" class="form-control" id="gn-referenceNodeCount" placeholder="@Localizer["ReferenceNodeCount"]" name="referenceNodeCount" data-bind="value: dialogStatistics()['default.Reference'].nodeCount" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">   
+                    <button type="button" class="btn btn-default" data-bind="click: closeStatisticsDialog">@Localizer["Close"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Command Buttons -->
+    <button type="button" class="btn btn-primary gn-commandWidgetTopMargin" data-bind="click: save, disable: isLoading() || isReadonly() || !nodeGraph()">
+        <i class="glyphicon glyphicon-floppy-disk" data-bind="visible: !isLoading()"></i><i class="glyphicon glyphicon-refresh spinning" style="display: none" data-bind="visible: isLoading"></i> @Localizer["Save"]
+    </button>
+
+    @if(User.IsInRole(RoleNames.ImplementationStatusTracker))
+    {
+        <button type="button" class="btn btn-default gn-commandWidgetTopMargin" data-bind="click: openCompareDialog, disable: isLoading() || isReadonly() || isImplemented(), visible: dialogId">
+            <span data-bind="visible: isImplemented()" style="display: none"><i class="glyphicon glyphicon-ok text-success"></i> @Localizer["IsImplemented"]</span>
+            <span data-bind="visible: !isImplemented()" title="@Localizer["IsNotImplementedTooltip"]"><i class="glyphicon glyphicon-remove text-danger"></i> @Localizer["MarkAsImplemented"]</span>
+        </button>
+    }
+
+    <button type="button" class="btn btn-default gn-commandWidgetTopMargin" data-bind="click: openStatisticsDialog, visible: dialogId">
+        <i class="glyphicon glyphicon-stats"></i> @Localizer["ShowStatistics"]
+    </button>
+
+    <button type="button" class="btn btn-default gn-commandWidgetTopMargin" data-bind="click: returnToNpc, visible: showReturnToNpcButton">
+        <i class="glyphicon glyphicon-level-up"></i> @Localizer["ReturnToNpc"]
+    </button>
+
+    <div class="alert alert-danger gn-defaultContentTopMargin" style="display: none" data-bind="visible: errorOccured">
+        <strong>@Localizer["Error"]</strong> @Localizer["ErrorOccured"]
+    </div>
+
+    <div class="alert alert-info gn-defaultContentTopMargin" style="display: none" data-bind="visible: lockedByUser">
+        <strong>@Localizer["Locked"]</strong> @Localizer["LockedPrefix"]<span data-bind="text: lockedByUser"></span>@Localizer["LockedPostfix"]
+    </div>
+
+    <div class="row gn-defaultContentTopMargin">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data-bind="if: !isReadonly()">
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodePlayerText" data-nodetype="tale.PlayerText">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["PlayerTextNode"]</div>
+                </div>
+            </div>
+
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodeNpcText" data-nodetype="tale.NpcText">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["NpcTextNode"]</div>
+                </div>
+            </div>
+
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodeChoice" data-nodetype="tale.Choice">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["ChoiceNode"]</div>
+                </div>
+            </div>
+            
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodeAction" data-nodetype="default.Action">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["ActionNode"]</div>
+                </div>
+            </div>
+
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodeCondition" data-nodetype="default.Condition">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["ConditionNode"]</div>
+                </div>
+            </div>
+            <div data-bind="draggableElement: 'clone'" class="gn-nodeInsertContainer gn-nodeReference" data-nodetype="default.Reference">
+                <div class="gn-nodeInsert">
+                    <div class="gn-labelInsert">@Localizer["ReferenceNode"]</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="gn-nodeGraphContainer">
+                <div data-bind="nodeGraph: nodeGraph, nodePaper: nodePaper, droppableElement: addNewNode, droppableAccept: '.gn-nodeInsertContainer'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous" asp-fallback-test="jQuery.ui" asp-fallback-src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" integrity="sha384-0BrUT26SU4JPtbvE/hI6oj4mbEXE32qhRoD51rUTB+QFrg6ViIceJR8op6FmEIA1" crossorigin="anonymous" asp-fallback-test="typeof _ != 'undefined'" asp-fallback-src="~/lib/jointjs/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js" integrity="sha384-NNt9ocJfZhIg2c5PbM5G2a3tTaeXhEfqCHWHNB7htzaWKn8MwFkzVyGdzLA8QMX7" crossorigin="anonymous" asp-fallback-test="Backbone" asp-fallback-src="~/lib/jointjs/backbone-min.js"></script>
+    <script src="~/lib/jointjs/joint.js"></script>
+    <script src="~/lib/jointjs/joint.shapes.dev.js"></script>
+
+    <environment include="Development">
+        <script src="~/js/Shared/nodeGraph/nodeLang.@(Localizer["NodeLang"].Value).js" asp-append-version="true"></script>
+        <script src="~/js/Tale/taleLang.@(Localizer["NodeLang"].Value).js" asp-append-version="true"></script>
+
+        <script src="~/lib/ace-builds/src-noconflict/ace.js"></script>
+        <script src="~/lib/ace-builds/src-noconflict/ext-language_tools.js"></script>
+
+        <script src="~/js/Shared/nodeGraph/nodeGraph.knockout.binding.js" asp-append-version="true"></script>
+        <script src="~/js/Tale/dialog.viewmodel.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/Shared/nodeGraph/nodeLang.@(Localizer["NodeLang"].Value).min.js" asp-append-version="true"></script>
+        <script src="~/js/Tale/taleLang.@(Localizer["NodeLang"].Value).min.js" asp-append-version="true"></script>
+
+        <script src="~/lib/ace-builds/src-min-noconflict/ace.js"></script>
+        <script src="~/lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+
+        <script src="~/js/Shared/nodeGraph/nodeGraph.knockout.binding.min.js" asp-append-version="true"></script>
+        <script src="~/js/Tale/dialog.viewmodel.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        GoNorth.Tale.Dialog.Localization = {
+            Tale: "@Localizer["Tale"]",
+            DirtyMessage: "@Localizer["DirtyMessage"]"
+        };
+
+        @if(Model.DisableAutoSaving)
+        {
+            <text>
+            GoNorth.Tale.Dialog.disableAutoSaving = true;
+            </text>
+        }
+        else
+        {
+            <text>
+            GoNorth.Tale.Dialog.disableAutoSaving = false;
+            </text>
+        }
+
+        jQuery(document).ready(function() {
+            ko.applyBindings(new GoNorth.Tale.Dialog.ViewModel(), jQuery("#gn-taleDialogContainer")[0]);
+        });
+    </script>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/jointjs/joint.css" />
+    
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/defaultNodes.css" />
+    </environment>
+    <environment exclude="Development">   
+        <link rel="stylesheet" href="~/css/defaultNodes.min.css" />
+    </environment>
+}

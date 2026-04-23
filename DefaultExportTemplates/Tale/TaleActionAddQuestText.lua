@@ -1,0 +1,1 @@
+BaseDialog_AddQuestText({{ action.quest.fields.Id.value }}, "{{ langkey action.text }}") -- {{ action.text_preview }}

@@ -1,0 +1,118 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@model IViewLocalizer
+
+<script type="text/javascript">
+    Dropzone.autoDiscover = false;
+
+    GoNorth.FlexFieldDatabase.ObjectForm.Localization = {
+        MarkedInMapNTimes: "@Model["MarkedInMapNTimes"]",
+        Npc: "@Model["Npc"]",
+        Item: "@Model["Item"]",
+        Skill: "@Model["Skill"]"
+    };
+
+    @if(User.IsInRole(RoleNames.Aika))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasAikaRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasAikaRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.Kirja))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKirjaRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKirjaRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.Karta))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKartaRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKartaRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.Tale))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasTaleRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasTaleRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.Kortisto))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKortistoRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasKortistoRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.Evne))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasEvneRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasEvneRights = false;
+        </text>
+    }
+
+    @if(User.IsInRole(RoleNames.ImplementationStatusTracker))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasImplementationStatusTrackerRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasImplementationStatusTrackerRights = false;
+        </text>
+    }
+    
+    @if(User.IsInRole(RoleNames.ExportObjects))
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasExportObjectsRights = true;
+        </text>
+    }
+    else
+    {
+        <text>
+        GoNorth.FlexFieldDatabase.ObjectForm.hasExportObjectsRights = false;
+        </text>
+    }
+</script>

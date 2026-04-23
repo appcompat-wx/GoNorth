@@ -1,0 +1,1 @@
+BaseNpc_TransferItem(playerNpc, this, "{{ action.selected_item.fields.ScriptName.value }}", {{ action.quantity }})
